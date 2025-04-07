@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## NextJs + BetterAuth + Prisma Starter Template
+
+A modern web application built with Next.js, better-auth, and Prisma for robust authentication and database management.
+
+## Tech Stack
+
+- Next.js 15.2.4 - React framework with App Router
+- better-auth 1.2.5 - Authentication library
+- Prisma 6.5.0 - Type-safe database ORM
+- React 19.0.0 - UI library
+- TypeScript 5.x - Type safety
+
+
+## Features
+
+- Modern authentication system with social login support (GitHub)
+- PostgreSQL database integration
+- Type-safe data access with Prisma ORM
+- Server components for improved performance
+
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- PostgreSQL database
+
+
+### Setup
+
+1. Clone the repository
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Configure your environment variables in `.env`:
+
+```
+DATABASE_URL="postgresql://user:password@localhost:5432/mydb"
+GITHUB_CLIENT_ID="your-github-client-id"
+GITHUB_CLIENT_SECRET="your-github-client-secret"
+AUTH_SECRET="your-auth-secret"
+```
+
+4. Initialize the database:
+
+```bash
+npx prisma migrate dev
+```
+
+5. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Authentication Flow
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project uses better-auth with a Prisma adapter for authentication. The main auth configuration is located in `auth.ts`, which sets up:
 
-## Learn More
+- PostgreSQL integration via Prisma
+- GitHub social login
+- Session management
 
-To learn more about Next.js, take a look at the following resources:
+Client-side authentication helpers are available in `auth-client.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Database Schema
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The database schema is defined in `schema.prisma` and managed by Prisma.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Build for Production
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+```
+
+
+### Start Production Server
+
+```bash
+npm start
+```
+
+For detailed deployment instructions, check out the Next.js deployment documentation.
+
+## License
+
+This project is licensed under the MIT License.
+
